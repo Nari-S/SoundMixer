@@ -57,7 +57,7 @@ class UserViewController: UITableViewController {
         self.tableView.reloadData()
         
         /* ID ごとにユーザを辞書形式で登録しユーザ数も保存（クラスでの保存ができない） */
-        userDefaults.set(["ID": self.user!.Id, "Name": self.user!.Name], forKey: String(self.user!.Id - 1))
+      userDefaults.set(["ID": self.user!.Id, "Name": self.user!.Name, "Setting": self.user!.musicSetting], forKey: String(self.user!.Id - 1))
         userDefaults.set(self.userNumber - 1, forKey: "userNumber")
     }
     let cancelAction = UIAlertAction(title: "取り消し", style: .default) { (action:UIAlertAction!) -> Void in }
@@ -80,6 +80,9 @@ class UserViewController: UITableViewController {
         self.users = appDelegate.init_users
         self.userNum = appDelegate.userNum
         self.userNumber = self.userNum + 1
+        for i in 0..<self.userNum {
+          print("ID:\(i) 保存設定数:\(self.users[i].musicSetting.count)")
+        }
       }
   }
     

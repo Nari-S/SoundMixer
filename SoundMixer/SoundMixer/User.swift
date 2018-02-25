@@ -18,4 +18,22 @@ class User {
   var BeforeView:String?
   var homeflag:Bool = false
   var musicSetFlag:Bool = false
+  var musicSetting = [MusicSetting]()
+}
+struct MusicSetting {
+  var Playing_1:MPMediaItem?
+  var Playing_2:MPMediaItem?
+  var Playing_3:MPMediaItem?
+  var Playing_1_volume:Double
+  var Playing_2_volume:Double
+  var Playing_3_volume:Double
+  var Playing_1_pitch:Double
+  var Playing_2_pitch:Double
+  var Playing_3_pitch:Double
+  var Playing_1_EQflag:Bool
+  var Playing_2_EQflag:Bool
+  var Playing_3_EQflag:Bool
+  var Playing_1_position:Double
+  var Playing_2_position:Double
+  var Playing_3_position:Double
 }

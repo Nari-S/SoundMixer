@@ -116,3 +116,93 @@ class PlayerViewController: UIViewController, MPMediaPickerControllerDelegate {
   
 }
 
+
+
+/*
+ import UIKit
+ import MediaPlayer
+ import AVFoundation
+ 
+ class PlayerViewController: UIViewController, MPMediaPickerControllerDelegate {
+ var audioPlayer:AVAudioPlayer?
+ var PlayingSong:MPMediaItem!
+ var PlayingSong2:MPMediaItem!
+ // player = AudioEnginePlayer.sharedInstance
+ var player = AudioEnginePlayer()
+ var player2 = AudioEnginePlayer()
+ 
+ @IBAction func Play(_ sender: Any) {
+ // 選択した曲情報がPlayingSongに入っているので、これをplayerにセット。
+ print("play")
+ print(PlayingSong.value(forProperty: MPMediaItemPropertyTitle)!)
+ print(PlayingSong2.value(forProperty: MPMediaItemPropertyTitle)!)
+ if(PlayingSong != nil){
+ let url: URL  = PlayingSong.value(forProperty: MPMediaItemPropertyAssetURL) as! URL
+ let url2: URL  = PlayingSong2.value(forProperty: MPMediaItemPropertyAssetURL) as! URL
+ 
+ do {
+ player.audioFile = try AVAudioFile(forReading: url)
+ player2.audioFile = try AVAudioFile(forReading: url2)
+ }
+ catch {
+ print("OWAOWARI")
+ return
+ }
+ player.audioEngine.connect(player.audioPlayerNode, to: player.audioUnitTimePitch, format: player.audioFile.processingFormat)
+ 
+ //player.audioEngine.connect(player.audioUnitTimePitch, to: player.audioEngine.mainMixerNode, fromBus: 0, toBus: 0, format: player.audioFile.processingFormat)
+ 
+ //  イコライザを適用する場合は以下を使用
+ 
+ player.audioEngine.connect(player.audioUnitTimePitch, to: player.audioUnitEQ, fromBus: 0, toBus: 0, format: player.audioFile.processingFormat)
+ player.audioEngine.connect(player.audioUnitEQ, to: player.audioEngine.mainMixerNode, fromBus: 0, toBus: 0, format: player.audioFile.processingFormat)
+ 
+ 
+ player2.audioEngine.connect(player2.audioPlayerNode, to: player2.audioUnitTimePitch, format: player2.audioFile.processingFormat)
+ //player2.audioEngine.connect(player2.audioUnitTimePitch, to: player2.audioEngine.mainMixerNode, fromBus: 0, toBus: 1, format: player2.audioFile.processingFormat)
+ 
+ //  イコライザを適用する場合は以下を使用
+ 
+ player2.audioEngine.connect(player2.audioUnitTimePitch, to: player2.audioUnitEQ, fromBus: 0, toBus: 0, format: player2.audioFile.processingFormat)
+ player2.audioEngine.connect(player2.audioUnitEQ, to: player2.audioEngine.mainMixerNode, fromBus: 0, toBus: 1, format: player2.audioFile.processingFormat)
+ 
+ 
+ 
+ 
+ player.audioEngine.prepare()
+ player2.audioEngine.prepare()
+ 
+ if player.playing {
+ player.pause()
+ player2.pause()
+ } else {
+ player.audioEngine.mainMixerNode.outputVolume = 1.0
+ player2.audioEngine.mainMixerNode.outputVolume = 1.0
+ player.play()
+ player2.play()
+ }
+ }
+ }
+ 
+ 
+ @IBOutlet weak var pitchSlider: UISlider!
+ @IBAction func changePitch(_ sender: Any) {
+ player.audioUnitTimePitch.pitch = pitchSlider.value
+ }
+ 
+ override func viewDidLoad() {
+ super.viewDidLoad()
+ //  player = MPMusicPlayerController.applicationMusicPlayer()
+ // Do any additional setup after loading the view, typically from a nib.
+ // player = MPMusicPlayerController.applicationMusicPlayer()
+ //player = MPMusicPlayerController.systemMusicPlayer()
+ }
+ 
+ override func didReceiveMemoryWarning() {
+ super.didReceiveMemoryWarning()
+ // Dispose of any resources that can be recreated.
+ }
+ 
+ 
+ }
+*/
